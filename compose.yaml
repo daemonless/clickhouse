@@ -17,7 +17,7 @@ x-daemonless:
       PUID: "User ID for the application process"
       PGID: "Group ID for the application process"
       TZ: "Timezone for the container"
-      CLICKHOUSE_PASSWORD: "Password for the default user. Unset = no password (open to anyone who can reach the ports)"
+      CLICKHOUSE_PASSWORD: "Password for the `default` user, used to sign in. Always set one: without it anyone who can reach the ports gets in"
       CLICKHOUSE_PASSWORD_FILE: "Read the password from this file instead (secrets)"
     volumes:
       /var/db/clickhouse: "Database data directory"
