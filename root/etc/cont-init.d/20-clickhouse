@@ -1,0 +1,38 @@
+#!/bin/sh
+# Initialize ClickHouse configuration and permissions
+
+CONFIG_DIR="/usr/local/etc/clickhouse-server"
+DATA_DIR="/var/db/clickhouse"
+LOG_DIR="/var/log/clickhouse"
+RUN_DIR="/var/run/clickhouse"
+
+mkdir -p "${DATA_DIR}" "${LOG_DIR}" "${RUN_DIR}" "${CONFIG_DIR}/config.d" "${CONFIG_DIR}/users.d"
+
+if [ ! -f "${CONFIG_DIR}/config.xml" ] && [ -f "${CONFIG_DIR}/config.xml.sample" ]; then
+    echo "[clickhouse-init] Seeding ${CONFIG_DIR}/config.xml from sample..."
+    cp "${CONFIG_DIR}/config.xml.sample" "${CONFIG_DIR}/config.xml"
+fi
+
+if [ ! -f "${CONFIG_DIR}/users.xml" ] && [ -f "${CONFIG_DIR}/users.xml.sample" ]; then
+    echo "[clickhouse-init] Seeding ${CONFIG_DIR}/users.xml from sample..."
+    cp "${CONFIG_DIR}/users.xml.sample" "${CONFIG_DIR}/users.xml"
+fi
+
+# Password for the default user from CLICKHOUSE_PASSWORD or CLICKHOUSE_PASSWORD_FILE.
+# Without one the server accepts anyone who can reach port 8123 or 9000.
+ENV_USERS="${CONFIG_DIR}/users.d/10-env-password.xml"
+if [ -n "${CLICKHOUSE_PASSWORD_FILE}" ] && [ -f "${CLICKHOUSE_PASSWORD_FILE}" ]; then
+    CLICKHOUSE_PASSWORD="$(cat "${CLICKHOUSE_PASSWORD_FILE}")"
+fi
+if [ -n "${CLICKHOUSE_PASSWORD}" ]; then
+    HASH="$(printf '%s' "${CLICKHOUSE_PASSWORD}" | sha256 -q)"
+    printf '<clickhouse>\n    <users>\n        <default>\n            <password remove="remove"/>\n            <password_sha256_hex>%s</password_sha256_hex>\n        </default>\n    </users>\n</clickhouse>\n' "${HASH}" > "${ENV_USERS}"
+    chmod 640 "${ENV_USERS}"
+else
+    rm -f "${ENV_USERS}"
+    echo "[clickhouse-init] WARNING: CLICKHOUSE_PASSWORD is not set; the default user has no password"
+fi
+
+# Ensure bsd:bsd ownership of runtime and database directories
+chown -R bsd:bsd "${DATA_DIR}" "${LOG_DIR}" "${RUN_DIR}" "${CONFIG_DIR}"
+chmod 750 "${DATA_DIR}" "${LOG_DIR}" "${RUN_DIR}"

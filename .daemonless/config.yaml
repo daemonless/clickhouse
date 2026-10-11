@@ -1,0 +1,28 @@
+# dbuild configuration file
+# Place in .daemonless/config.yaml or .dbuild.yaml (higher priority)
+#
+# Full reference: https://github.com/daemonless/dbuild
+
+icon: ':simple-clickhouse:'
+
+build:
+  architectures:
+    - amd64
+    - aarch64
+  variants:
+    - tag: pkg
+      containerfile: Containerfile.pkg
+      tag_desc: "Installed from the FreeBSD quarterly package repository."
+    - tag: pkg-latest
+      containerfile: Containerfile.pkg
+      alias: latest
+      default: true
+      args:
+        BASE_VERSION: "15-latest"
+      tag_desc: "Installed from the FreeBSD latest package repository."
+
+cit:
+  mode: health
+  port: 8123
+  health: /ping
+  ready: "Ready for connections"

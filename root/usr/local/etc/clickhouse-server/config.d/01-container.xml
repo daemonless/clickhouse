@@ -1,0 +1,17 @@
+<clickhouse>
+    <!-- Listen on all IPv4 interfaces -->
+    <listen_host>0.0.0.0</listen_host>
+
+    <!-- Avoid mlock error in jail/container environments without allow.mlock -->
+    <mlock_executable>false</mlock_executable>
+
+    <!-- Log to console and standard log path -->
+    <logger>
+        <level>information</level>
+        <log>/var/log/clickhouse/clickhouse-server.log</log>
+        <errorlog>/var/log/clickhouse/clickhouse-server.err.log</errorlog>
+        <size>100M</size>
+        <count>3</count>
+        <console>1</console>
+    </logger>
+</clickhouse>

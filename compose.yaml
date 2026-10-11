@@ -1,0 +1,68 @@
+name: clickhouse
+
+x-daemonless:
+  title: "ClickHouse"
+  icon: ":simple-clickhouse:"
+  category: "Databases"
+  description: "ClickHouse is an open-source column-oriented database management system that allows generating analytical data reports in real time."
+  upstream_url: "https://clickhouse.com/"
+  web_url: "https://clickhouse.com/"
+  freshports_url: "https://www.freshports.org/databases/clickhouse/"
+  user: "bsd"
+  mlock: false
+  community: "Discord:https://discord.gg/Kb9tkhecZT"
+
+  docs:
+    env:
+      PUID: "User ID for the application process"
+      PGID: "Group ID for the application process"
+      TZ: "Timezone for the container"
+      CLICKHOUSE_PASSWORD: "Password for the default user. Unset = no password (open to anyone who can reach the ports)"
+      CLICKHOUSE_PASSWORD_FILE: "Read the password from this file instead (secrets)"
+    volumes:
+      /var/db/clickhouse: "Database data directory"
+    ports:
+      8123: "HTTP interface and web UI (/play)"
+      9000: "Native TCP client"
+
+  notes: |
+    ## First run
+
+    Set `CLICKHOUSE_PASSWORD`. Without it the `default` user has no password and
+    anyone who can reach port 8123 or 9000 has full access to the database.
+
+    ## Web UI
+
+    The HTTP port serves a query console at `/play` and a metrics dashboard at
+    `/dashboard`. Sign in there with user `default` and your `CLICKHOUSE_PASSWORD`.
+
+    ## Configuration
+
+    `config.xml` and `users.xml` live inside the image. Put your own settings in
+    files mounted under `/usr/local/etc/clickhouse-server/config.d/` and
+    `/usr/local/etc/clickhouse-server/users.d/`; ClickHouse merges them on start.
+
+    ## Stopping
+
+    ClickHouse on FreeBSD does not exit on its own after flushing storages, so the
+    container stops it after 30 seconds. Keep `stop_grace_period` above that.
+
+services:
+  clickhouse:
+    image: ghcr.io/daemonless/clickhouse:latest
+    container_name: clickhouse
+    restart: unless-stopped
+    stop_grace_period: 60s
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - CLICKHOUSE_PASSWORD=changeme
+
+    volumes:
+      - /path/to/containers/clickhouse/data:/var/db/clickhouse
+
+    ports:
+      - "8123:8123"
+      - "9000:9000"
