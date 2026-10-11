@@ -40,7 +40,7 @@ services:
       - PUID=1000  # User ID for the application process
       - PGID=1000  # Group ID for the application process
       - TZ=UTC  # Timezone for the container
-      - CLICKHOUSE_PASSWORD=changeme  # Password for the default user. Unset = no password (open to anyone who can reach the ports)
+      - CLICKHOUSE_PASSWORD=changeme  # Password for the `default` user, used to sign in. Always set one: without it anyone who can reach the ports gets in
       - CLICKHOUSE_PASSWORD_FILE=<CLICKHOUSE_PASSWORD_FILE>  # Read the password from this file instead (secrets)
     volumes:
       - "/containers/clickhouse/clickhouse:/var/db/clickhouse"
@@ -152,7 +152,7 @@ Access at: `http://localhost:8123`
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
-| `CLICKHOUSE_PASSWORD` | `changeme` | Password for the default user. Unset = no password (open to anyone who can reach the ports) |
+| `CLICKHOUSE_PASSWORD` | `changeme` | Password for the `default` user, used to sign in. Always set one: without it anyone who can reach the ports gets in |
 | `CLICKHOUSE_PASSWORD_FILE` | `<CLICKHOUSE_PASSWORD_FILE>` | Read the password from this file instead (secrets) |
 
 ### Volumes
