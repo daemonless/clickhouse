@@ -41,7 +41,7 @@ services:
       - PGID=1000  # Group ID for the application process
       - TZ=UTC  # Timezone for the container
       - CLICKHOUSE_PASSWORD=changeme  # Password for the `default` user, used to sign in. Always set one: without it anyone who can reach the ports gets in
-      - CLICKHOUSE_PASSWORD_FILE=<CLICKHOUSE_PASSWORD_FILE>  # Read the password from this file instead (secrets)
+      # - CLICKHOUSE_PASSWORD_FILE=  # Read the password from this file instead (secrets)
     volumes:
       - "/containers/clickhouse/clickhouse:/var/db/clickhouse"
     ports:
@@ -64,7 +64,6 @@ PUID=1000
 PGID=1000
 TZ=UTC
 CLICKHOUSE_PASSWORD=changeme
-CLICKHOUSE_PASSWORD_FILE=<CLICKHOUSE_PASSWORD_FILE>
 ```
 
 **appjail-director.yml**:
@@ -89,7 +88,6 @@ services:
         - PGID: !ENV '${PGID}'
         - TZ: !ENV '${TZ}'
         - CLICKHOUSE_PASSWORD: !ENV '${CLICKHOUSE_PASSWORD}'
-        - CLICKHOUSE_PASSWORD_FILE: !ENV '${CLICKHOUSE_PASSWORD_FILE}'
     volumes:
       - clickhouse_clickhouse: /var/db/clickhouse
 volumes:
@@ -134,7 +132,6 @@ services:
       - PGID=1000
       - TZ=UTC
       - CLICKHOUSE_PASSWORD=changeme
-      - CLICKHOUSE_PASSWORD_FILE=<CLICKHOUSE_PASSWORD_FILE>
     volumes:
       - "/containers/clickhouse/clickhouse:/var/db/clickhouse"
 ```
