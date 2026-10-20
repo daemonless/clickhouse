@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-18T07:24:06Z",
+  "generated": "2026-10-20T00:00:56Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
       "app_version": "26.3.24.4",
       "arch": "amd64",
-      "generated": "2026-10-18T07:20:28Z",
+      "generated": "2026-10-19T23:55:13Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -370,9 +370,9 @@
       }
     },
     "pkg-latest-amd64": {
-      "app_version": "26.3.25.2",
+      "app_version": "26.3.26.3",
       "arch": "amd64",
-      "generated": "2026-10-18T07:20:12Z",
+      "generated": "2026-10-19T23:55:31Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -626,7 +626,7 @@
               "APACHE20"
             ],
             "name": "clickhouse",
-            "version": "26.3.25.2"
+            "version": "26.3.26.3"
           },
           {
             "licenses": [
