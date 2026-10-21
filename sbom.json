@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-20T00:00:56Z",
+  "generated": "2026-10-21T22:25:10Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
       "app_version": "26.3.24.4",
       "arch": "amd64",
-      "generated": "2026-10-19T23:55:13Z",
+      "generated": "2026-10-21T22:24:37Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -189,7 +189,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p4"
+            "version": "15.1p5"
           },
           {
             "licenses": [
@@ -238,7 +238,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p4"
+            "version": "15.1p5"
           },
           {
             "licenses": [
@@ -370,9 +370,9 @@
       }
     },
     "pkg-latest-amd64": {
-      "app_version": "26.3.26.3",
+      "app_version": "26.8.1.2041",
       "arch": "amd64",
-      "generated": "2026-10-19T23:55:31Z",
+      "generated": "2026-10-21T22:24:18Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -556,7 +556,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p4"
+            "version": "15.1p5"
           },
           {
             "licenses": [
@@ -605,7 +605,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p4"
+            "version": "15.1p5"
           },
           {
             "licenses": [
@@ -626,7 +626,7 @@
               "APACHE20"
             ],
             "name": "clickhouse",
-            "version": "26.3.26.3"
+            "version": "26.8.1.2041"
           },
           {
             "licenses": [
