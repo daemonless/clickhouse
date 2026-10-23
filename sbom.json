@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-21T22:25:10Z",
+  "generated": "2026-10-23T12:36:19Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
       "app_version": "26.3.24.4",
       "arch": "amd64",
-      "generated": "2026-10-21T22:24:37Z",
+      "generated": "2026-10-23T12:35:38Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -263,13 +263,6 @@
           },
           {
             "licenses": [
-              "ISCL"
-            ],
-            "name": "execline",
-            "version": "2.9.8.1"
-          },
-          {
-            "licenses": [
               "MIT"
             ],
             "name": "expat",
@@ -331,20 +324,6 @@
             ],
             "name": "readline",
             "version": "8.3.6"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "s6",
-            "version": "2.14.0.1"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "skalibs",
-            "version": "2.14.5.1"
           }
         ],
         "go": [],
@@ -358,7 +337,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 48,
+        "freebsd": 45,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -366,13 +345,13 @@
         "python": 0,
         "ruby": 0,
         "rust": 0,
-        "total": 48
+        "total": 45
       }
     },
     "pkg-latest-amd64": {
       "app_version": "26.8.1.2041",
       "arch": "amd64",
-      "generated": "2026-10-21T22:24:18Z",
+      "generated": "2026-10-23T12:35:21Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -630,13 +609,6 @@
           },
           {
             "licenses": [
-              "ISCL"
-            ],
-            "name": "execline",
-            "version": "2.9.8.1"
-          },
-          {
-            "licenses": [
               "MIT"
             ],
             "name": "expat",
@@ -698,20 +670,6 @@
             ],
             "name": "readline",
             "version": "8.3.6"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "s6",
-            "version": "2.14.0.1"
-          },
-          {
-            "licenses": [
-              "ISCL"
-            ],
-            "name": "skalibs",
-            "version": "2.14.5.1"
           }
         ],
         "go": [],
@@ -725,7 +683,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 48,
+        "freebsd": 45,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -733,7 +691,7 @@
         "python": 0,
         "ruby": 0,
         "rust": 0,
-        "total": 48
+        "total": 45
       }
     }
   }
