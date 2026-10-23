@@ -44,8 +44,10 @@ x-daemonless:
 
     ## Stopping
 
-    ClickHouse on FreeBSD does not exit on its own after flushing storages, so the
-    container stops it after 30 seconds. Keep `stop_grace_period` above that.
+    ClickHouse on FreeBSD does not exit on its own after flushing storages, so
+    the container gives the flush 30s after the stop signal, then kills the
+    server. Keep `stop_grace_period` above that (60s here): plain `podman stop`
+    waits only 10s.
 
 services:
   clickhouse:

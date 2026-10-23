@@ -1,0 +1,29 @@
+#!/bin/sh
+# Start clickhouse; /init has already dropped to the run user.
+
+export HOME=/var/db/clickhouse
+# One process, not watchdog + worker: on FreeBSD the worker hangs after
+# "Waiting for background threads" on SIGTERM (ENOTCONN closing listeners),
+# and a killed watchdog would leave it alive holding the log pipe.
+export CLICKHOUSE_WATCHDOG_ENABLE=0
+
+echo "[INFO] Starting ClickHouse server..."
+
+# On FreeBSD the server never exits after flushing on TERM, so pass the stop
+# on, give the flush 30s (as s6's timeout-kill did), then kill it. Without
+# this the container hangs until podman's stop timeout.
+/usr/local/bin/clickhouse-server \
+    --config-file=/usr/local/etc/clickhouse-server/config.xml &
+pid=$!
+stop() {
+    kill -TERM "$pid" 2>/dev/null
+    i=0
+    while kill -0 "$pid" 2>/dev/null && [ "$i" -lt 30 ]; do
+        sleep 1
+        i=$((i + 1))
+    done
+    kill -KILL "$pid" 2>/dev/null
+    exit 0
+}
+trap stop TERM INT
+wait "$pid"

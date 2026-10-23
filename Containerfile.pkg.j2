@@ -1,5 +1,5 @@
 ARG BASE_VERSION=15
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG PKG_NAME="clickhouse"
@@ -33,9 +33,12 @@ RUN pkg update && \
 
 # Copy root filesystem
 COPY root/ /
+RUN chmod +x /daemonless/libexec/clickhouse /daemonless/init.d/*
+
+CMD ["/daemonless/libexec/clickhouse"]
 
 # Set permissions
-RUN chmod +x /etc/services.d/clickhouse/run /healthz /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /healthz
 
 # Expose HTTP (8123) and native client (9000)
 EXPOSE 8123 9000
