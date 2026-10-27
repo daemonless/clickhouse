@@ -15,7 +15,7 @@ build:
       tag_desc: "Installed from the FreeBSD quarterly package repository."
     - tag: pkg-latest
       containerfile: Containerfile.pkg
-      alias: latest
+      aliases: ["latest"]
       default: true
       args:
         BASE_VERSION: "15-latest"
