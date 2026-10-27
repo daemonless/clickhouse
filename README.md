@@ -22,7 +22,7 @@ ClickHouse is an open-source column-oriented database management system that all
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `pkg` | Installed from the FreeBSD quarterly package repository. | Alternative build. |
-| `pkg-latest` | Installed from the FreeBSD latest package repository. | Most users — recommended. |
+| `latest` / `pkg-latest` | Installed from the FreeBSD latest package repository. | Most users — recommended. |
 
 ## Prerequisites
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
@@ -34,7 +34,7 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   clickhouse:
-    image: "ghcr.io/daemonless/clickhouse:pkg"
+    image: "ghcr.io/daemonless/clickhouse:latest"
     container_name: clickhouse
     environment:
       - PUID=1000  # User ID for the application process
@@ -100,7 +100,7 @@ volumes:
 ```
 # Makejail
 
-ARG tag=pkg
+ARG tag=latest
 
 OPTION container=boot
 OPTION overwrite=force
@@ -124,7 +124,7 @@ Save the files above, then run `appjail-director up`.
 services:
   clickhouse:
     name: clickhouse
-    image: "ghcr.io/daemonless/clickhouse:pkg"
+    image: "ghcr.io/daemonless/clickhouse:latest"
     network:
       - mode: host
     environment:

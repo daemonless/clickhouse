@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-26T12:41:16Z",
+  "generated": "2026-10-27T09:11:53Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
       "app_version": "26.3.24.4",
       "arch": "amd64",
-      "generated": "2026-10-26T12:23:19Z",
+      "generated": "2026-10-27T09:10:03Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -351,7 +351,7 @@
     "pkg-latest-amd64": {
       "app_version": "26.8.3.105",
       "arch": "amd64",
-      "generated": "2026-10-26T12:40:31Z",
+      "generated": "2026-10-27T09:11:07Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
