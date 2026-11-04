@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-01T18:26:34Z",
+  "generated": "2026-11-04T08:15:53Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
       "app_version": "26.3.24.4",
       "arch": "amd64",
-      "generated": "2026-11-01T18:24:04Z",
+      "generated": "2026-11-04T08:15:00Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -266,7 +266,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.4"
+            "version": "2.9.0"
           },
           {
             "licenses": [
@@ -349,9 +349,9 @@
       }
     },
     "pkg-latest-amd64": {
-      "app_version": "26.8.5.13",
+      "app_version": "26.8.6.5",
       "arch": "amd64",
-      "generated": "2026-11-01T18:23:59Z",
+      "generated": "2026-11-04T08:15:05Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -605,7 +605,7 @@
               "APACHE20"
             ],
             "name": "clickhouse",
-            "version": "26.8.5.13"
+            "version": "26.8.6.5"
           },
           {
             "licenses": [
