@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T10:35:43Z",
+  "generated": "2026-11-24T10:46:22Z",
   "image": "clickhouse",
   "tags": {
     "pkg-amd64": {
@@ -349,9 +349,9 @@
       }
     },
     "pkg-latest-amd64": {
-      "app_version": "26.8.10.6",
+      "app_version": "26.8.12.53",
       "arch": "amd64",
-      "generated": "2026-11-17T23:32:38Z",
+      "generated": "2026-11-24T10:45:31Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -602,10 +602,10 @@
           },
           {
             "licenses": [
-              "APACHE20"
+              "Apache-2.0"
             ],
             "name": "clickhouse",
-            "version": "26.8.10.6"
+            "version": "26.8.12.53"
           },
           {
             "licenses": [
@@ -662,7 +662,7 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.9.2"
+            "version": "2.9.3"
           },
           {
             "licenses": [
